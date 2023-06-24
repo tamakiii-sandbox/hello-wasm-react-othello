@@ -20,4 +20,13 @@ uninstall:
 	rm -rf node_modules
 
 node_modules:
-	npm install --dev
+	npm install --include=dev
+
+# "start": "react-scripts start",
+# "build": "webpack --mode=production --node-env=production",
+# "test": "react-scripts test",
+# "eject": "react-scripts eject",
+# "build:dev": "webpack --mode=development",
+# "build:prod": "webpack --mode=production --node-env=production",
+# "watch": "webpack --watch",
+# "serve": "webpack serve"

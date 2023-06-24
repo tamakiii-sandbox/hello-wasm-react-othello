@@ -8,7 +8,7 @@ const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
 const isProduction = process.env.NODE_ENV == "production";
 
 const config = {
-  entry: "./src/index.ts",
+  entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "dist"),
   },
@@ -26,6 +26,7 @@ const config = {
 
     new WasmPackPlugin({
       crateDirectory: path.resolve(__dirname, "../wasm"),
+      outDir: path.resolve(__dirname, "pkg"),
     }),
   ],
   module: {
@@ -45,6 +46,10 @@ const config = {
       {
         test: /\.wasm$/,
         type: "webassembly/async",
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },

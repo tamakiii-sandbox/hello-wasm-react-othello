@@ -20,3 +20,12 @@ node_modules:
 
 dist:
 	npx webpack --mode=production
+
+# "start": "react-scripts start",
+# "build": "webpack --mode=production --node-env=production",
+# "test": "react-scripts test",
+# "eject": "react-scripts eject",
+# "build:dev": "webpack --mode=development",
+# "build:prod": "webpack --mode=production --node-env=production",
+# "watch": "webpack --watch",
+# "serve": "webpack serve"
