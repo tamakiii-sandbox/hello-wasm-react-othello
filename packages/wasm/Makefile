@@ -1,4 +1,4 @@
-.PHONY: help build clean
+.PHONY: help build test clean
 
 help:
 	@cat $(firstword $(MAKEFILE_LIST))
@@ -6,6 +6,9 @@ help:
 build: \
 	target/debug \
 	target/release
+
+test:
+	cargo test
 
 target/debug:
 	cargo build
