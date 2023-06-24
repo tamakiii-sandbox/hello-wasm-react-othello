@@ -3,6 +3,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
+const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
 
 const isProduction = process.env.NODE_ENV == "production";
 
@@ -22,6 +23,10 @@ const config = {
 
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+
+    new WasmPackPlugin({
+      crateDirectory: path.resolve(__dirname, "../wasm"),
+    }),
   ],
   module: {
     rules: [
@@ -37,10 +42,17 @@ const config = {
 
       // Add your rules for custom modules here
       // Learn more about loaders from https://webpack.js.org/loaders/
+      {
+        test: /\.wasm$/,
+        type: "webassembly/async",
+      },
     ],
   },
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
+  },
+  experiments: {
+    asyncWebAssembly: true,
   },
 };
 
